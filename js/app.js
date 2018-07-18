@@ -524,4 +524,27 @@ function aboveGradeHse(){
   }]
 });
 }
+function students() {
+  var headOffice = dropMenu.value;
+  var headOfficeClasses = dropMenuTwo.value;
+  var name;
+  var active;
+  var div = document.getElementById('students-profile');
+  var img = document.createElement('img');
+  var h1 = document.createElement('h1');
+  h1.innerHTML = name;
+  img.src = 'assets/images/laboratoria.png';
+  div.appendChild('img');
 
+  for (student of data[headOffice][headOfficeClasses]["students"]){
+    name = student.name;
+    active = student.active;
+     if (active === true){
+       console.log("Ativa");    
+     } else if (active === false){
+       console.log("Inativa");
+     }
+        
+  }
+  
+ }
