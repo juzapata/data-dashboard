@@ -4,7 +4,8 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     background-color: #f7f7f7;
-    height: 10000px;
+    /* background-color: #f5e469; */
+    height: auto;
 
 }
 body * {
@@ -15,17 +16,19 @@ header {
     display: flex;
     justify-content: center;
     position: fixed;
-    height: 5em;
+    height: 4em;
     width: 100%;
     padding-top: 0.5em;
     background-color: #fff;
+    /* background-color: #ffe521; */
     z-index: 1;
+
 }
 
 nav { 
-    top: 5em;
-    height: 8em;
-    padding: 2em 0em 1em 3em;
+    top: 4em;
+    height: 7em;
+    padding: 1em 0em 1em 3em;
     
     position: fixed;
     background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
@@ -71,6 +74,7 @@ select {
     -moz-appearance: none;
     padding-left: 10px;
     width: 13em;
+    outline: none;
 }
 
 select option:hover{
@@ -79,7 +83,7 @@ select option:hover{
 
 #medias{
     position: relative;
-    top: 15em;
+    top: 12em;
     display: flex;
     justify-content: space-around;
 }
@@ -87,17 +91,18 @@ select option:hover{
 .overview {
     background-color: #fff;
     height: 400px;
-    width: 400px;
-    margin-bottom: 3em;
+    width: 645px;
+    margin-bottom: 2em;
 }
 
 .overview h2{
     text-align: center;
+    border-bottom: 4px solid #ffe521;
 }
 
 
 .overview p{
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     width: 160px;
     height: auto;
     text-align: center;
@@ -110,3 +115,26 @@ select option:hover{
     position: relative;
     top: 500px;
 }
+
+.graphics {
+    width: 430px;
+    height: 300px; 
+    margin: 0 auto;
+  }
+
+  .overview-2 {
+      display: flex;
+
+  }
+
+  #mentors-profile{
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      top: 15em;
+  }
+
+  #mentors-profile img {
+      height: 300px;
+      border-bottom: 5px solid #ffe521;
+  }

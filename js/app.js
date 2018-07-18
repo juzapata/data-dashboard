@@ -39,9 +39,46 @@ for (i in data[headOffice][headOfficeClasses]['students']){
             }
             var total = inactiveTeam + activeTeam;            
             var dropOut = (inactiveTeam * 100)/total;           
-            printDropOut.innerHTML=dropOut.toFixed(1) + '% <br> Porcentagem de alunas inativas';
-            printActiveStudents.innerHTML=activeTeam + '<br> Número de alunas ativas';
-    
+            printDropOut.innerHTML=dropOut.toFixed(1) + '% <br> Alunas inativas';
+            printActiveStudents.innerHTML=activeTeam + '<br> Alunas ativas';
+            
+            Highcharts.chart('container', {
+                chart: {
+                  plotBackgroundColor: null,
+                  plotBorderWidth: null,
+                  plotShadow: false,
+                  type: 'pie'
+                },
+                title: {
+                  text: 'Percentual de Alunas Ativas e Inativas'
+                },
+                tooltip: {
+                  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                  pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                      enabled: false
+                    },
+                    showInLegend: true
+                  }
+                },
+                series: [{
+                  name: 'Porcentagem',
+                  colorByPoint: true,
+                  data: [{
+                    name: 'Ativas',
+                    y: (100 - dropOut),
+                    sliced: true,
+                    selected: true
+                  }, {
+                    name: 'Inativas',
+                    y: dropOut
+                  }]
+                }]
+              });   
 }
 
 calculateJediMedia();
@@ -49,6 +86,8 @@ calculateTeacherMedia();
 caculateNetPromoterScore();
 satisfied();
 AboveGradeStudents();
+AboveGradeHse();
+AboveGradeTech();
 }
  
 function calculateJediMedia(){
@@ -72,7 +111,55 @@ function calculateJediMedia(){
             
         }
          showJediMedia.innerHTML = note.toFixed(1) + '<br> Media dos Jedis';
-            
+          console.log(jediMediaArray);  
+          Highcharts.chart('container-4', {
+
+            title: {
+              text: 'Media Jedi Master'
+            },
+          
+            yAxis: {
+              title: {
+                text: 'Media'
+              }
+            },
+            legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle'
+            },
+          
+            plotOptions: {
+              series: {
+                label: {
+                  connectorAllowed: false
+                },
+                pointStart: 1
+              }
+            },
+          
+            series: [{
+              name: 'Media',
+              data: jediMediaArray
+            } 
+            ],
+          
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                  }
+                }
+              }]
+            }
+          
+          });
         }
 
 function calculateTeacherMedia(){
@@ -94,7 +181,54 @@ function calculateTeacherMedia(){
             showMentorMedia.innerHTML = note.toFixed(1) + '<br> Media dos Mentores';
             
         }
+        Highcharts.chart('container-3', {
 
+            title: {
+              text: 'Media Mentores'
+            },
+          
+            yAxis: {
+              title: {
+                text: 'Media'
+              }
+            },
+            legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle'
+            },
+          
+            plotOptions: {
+              series: {
+                label: {
+                  connectorAllowed: false
+                },
+                pointStart: 1
+              }
+            },
+          
+            series: [{
+              name: 'Media',
+              data: teacherMediaArray
+            } 
+            ],
+          
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                  }
+                }
+              }]
+            }
+          
+          });
 }
 
 function caculateNetPromoterScore(){
@@ -113,7 +247,7 @@ function caculateNetPromoterScore(){
         var nps = (promoters - detractors)/total.length;   
         
         
-document.getElementById('nps').innerHTML = nps.toFixed(1) + '% <br> alunas indicam a Laboratória';
+document.getElementById('nps').innerHTML = nps.toFixed(1) + '% <br> Alunas que indicam a Laboratória';
         
             
         }
@@ -137,9 +271,46 @@ function satisfied(){
       supera += ratingsStudent.supera;
      totalSatisfied = (cumple + supera)/ratingsStudentArray.length;
      
-document.getElementById('supera').innerHTML = totalSatisfied.toFixed(1) + '% <br> das alunas estão satisfeitas com a Laboratória';
+document.getElementById('supera').innerHTML = totalSatisfied.toFixed(1) + '% <br> Alunas satisfeitas com a Laboratória';
      
-    }    
+    } 
+    Highcharts.chart('container-5', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {
+          text: 'Taxa de Satisfação'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: false
+            },
+            showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Porcentagem',
+          colorByPoint: true,
+          data: [{
+            name: 'Satisfeitas',
+            y:totalSatisfied ,
+            sliced: true,
+            selected: true
+          }, {
+            name: 'Insatisfeitas',
+            y: (100-totalSatisfied)
+          }]
+        }]
+      });   
 }
 
 function AboveGradeStudents(){
@@ -167,9 +338,111 @@ function AboveGradeStudents(){
               
          } var totalPercent = (numberOfAboveGrade*100)/name.length;
     }
-          document.getElementById('above-grade').innerHTML = numberOfAboveGrade + '<br> aluna(s) atingiram mais de 70% da média em todos sprints';
-          document.getElementById('above-grade-percentual').innerHTML = totalPercent.toFixed(1) + '% <br> das alunas atingiram mais de 70% da média em todos sprints';
-    // console.log("quantas passaram", numberOfAboveGrade);
-    //        console.log(totalPercent);
+          document.getElementById('above-grade').innerHTML = numberOfAboveGrade + '<br> Alunas que atingiram a média';
+          document.getElementById('above-grade-percentual').innerHTML = totalPercent.toFixed(1) + '% <br> Alunas atingiram a média';
+    
+          Highcharts.chart('container-2', {
+            chart: {
+              type: 'column'
+            },
+            title: {
+              text: 'Percentual de Alunas que Atigiram a Média'
+            },
+            
+            xAxis: {
+              categories: [
+                ''
+              ],
+              crosshair: true
+            },
+            yAxis: {
+              min: 0,
+              title: {
+                text: 'Porcentagem(%)'
+              }
+            },
+            tooltip: {
+              headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
+            },
+            plotOptions: {
+              column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+              }
+            },
+            series: [{
+              name: 'Alunas Acima da Média',
+              data: [(100 - totalPercent)]
+          
+            }, {
+              name: 'Alunas Abaixo da Média',
+              data: [totalPercent]
+            }]
+          });
            
+   }
+
+   function AboveGradeTech(){
+    var headOffice = dropMenu.value;
+    var headOfficeClasses = dropMenuTwo.value;
+    var sprints;
+    var tech;
+    var name = [];
+    var techMinArray = 0;
+    var numberOfMinTech = 0;
+    var totalPercent;
+    for (student of data[headOffice][headOfficeClasses]["students"]){
+      // console.log(student.length);
+      sprints = student.sprints;
+       name.push(student.name);
+      for (i in sprints){
+         tech = sprints[i].score.tech;
+         // console.log(tech);
+         if (tech > 1260){
+             techMinArray += 1;
+             // console.log(techMinArray);        
+         }
+          if (techMinArray === sprints.length){
+             numberOfMinTech += 1;
+          }          
+       }
+    } // console.log(numberOfMinTech);
+      totalPercent = (numberOfMinTech*100)/name.length;
+       // console.log(totalPercent); 
+       document.getElementById('above-tech').innerHTML = totalPercent.toFixed(1) + '% <br> Alunas que excedem a média Tech' ;  
+   }
+
+   function AboveGradeHse(){
+    var headOffice = dropMenu.value;
+    var headOfficeClasses = dropMenuTwo.value;
+    var sprints;
+    var hse;
+    var name = [];
+    var hseMinArray = 0;
+    var numberOfMinHse = 0;
+    var totalPercent;
+    for (student of data[headOffice][headOfficeClasses]["students"]){
+      // console.log(student.length);
+      sprints = student.sprints;
+       name.push(student.name);
+      for (i in sprints){
+         hse = sprints[i].score.hse;
+         // console.log(tech);
+         if (hse > 840){
+             hseMinArray += 1;
+             // console.log(techMinArray);        
+         }
+          if (hseMinArray === sprints.length){
+             numberOfMinHse += 1;
+          }          
+       }
+    } console.log(numberOfMinHse);
+      totalPercent = (numberOfMinHse*100)/name.length;
+       console.log(totalPercent); 
+       document.getElementById('above-hse').innerHTML = totalPercent.toFixed(1) + '% <br> Alunas que excedem a média HSE'    
    }

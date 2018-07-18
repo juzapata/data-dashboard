@@ -9,68 +9,110 @@
   <body>
     <header> 
       <img id ='logo-laboratoria' src="assets/images/logo-laboratoria.svg" alt="Logo Laboratoria">
-  </header>
-  <nav>      
-  <select id="drop-menu" onchange="openDropMenu('drop-menu','drop-menu-2')">                
-      <option value="none" selected>SELECIONE A SEDE</option>
-      <option value="AQP">AREQUIPA</option>
-      <option value="CDMX">CIDADE DO MÉXICO</option>
-      <option value="LIM">LIMA</option>
-      <option value="SCL">SANTIAGO DO CHILE</option>               
-  </select>
-  <select id="drop-menu-2"></select>
-  <ul>
-      <li>
-          <a href="#">OVERVIEW</a>
-      </li>
-      <li>
-          <a href="#">ESTUDANTES</a>
-      </li>
-      <li>
-          <a href="#">MENTORES</a>
-      </li>
-  </ul>
-</nav>
-
-<section>
-  <div id='medias'>
-      <div class='overview'>
+    </header>
+    <nav>      
+      <select id="drop-menu" onchange="openDropMenu('drop-menu','drop-menu-2')">                
+        <option value="none" selected>SELECIONE A SEDE</option>
+        <option value="AQP">AREQUIPA</option>
+        <option value="CDMX">CIDADE DO MÉXICO</option>
+        <option value="LIM">LIMA</option>
+        <option value="SCL">SANTIAGO DO CHILE</option>               
+      </select>
+      <select id="drop-menu-2"></select>
+      <ul>
+        <li>
+          <a href="index.html">OVERVIEW</a>
+        </li>
+        <li>
+          <a href="estudantes.html">ESTUDANTES</a>
+        </li>
+        <li>
+          <a href="mentores.html">MENTORES</a>
+        </li>
+      </ul>
+    </nav>
+    <section>
+      <div id='medias'>
+        <div class='overview'>
           <h2>DESENVOLVIMENTO</h2>
-          <p id='enrolment'></p>
-          <p id= 'drop-out' ></p>
+          <div class='overview-2'>
+            <div>
+              <p id='enrolment'></p>
+              <p id= 'drop-out' ></p> 
+            </div>  
+            <div id="container" class='graphics'></div>
+          </div>          
+        </div>
+        <div class='overview'>
+          <h2>ALUNAS ACIMA DA MÉDIA</h2>
+          <div class='overview-2'>
+            <div>
+              <p id ='above-grade'></p>
+              <p id ='above-grade-percentual'></p>
+            </div>
+            <div id="container-2" class='graphics'></div>
+          </div>
+        </div>      
       </div>
-      <div class='overview'>
-          <h2>MEDIA JEDI'S</h2>
-          <p id='jedi-media'></p>
-      </div>
-      <div class='overview'>
+      <div id='medias'>
+        <div class='overview'>
           <h2>MEDIA MENTORES</h2>
-          <p id ='mentors-media'></p>
+          <div class='overview-2'>
+            <div>
+              <p id ='mentors-media'></p>
+            </div>
+            <div id="container-3" class="graphics"></div>
+          </div>  
+        </div>
+        <div class='overview'>
+          <h2>MEDIA JEDI'S</h2>
+          <div class='overview-2'>
+            <div>
+              <p id='jedi-media'></p>              
+            </div>
+            <div id="container-4" class="graphics"></div>
+          </div>          
+        </div>
       </div>
-  </div>
-  <!-- <div>
-      <select id="drop-menu-3"></select>
-  </div> -->
-  <div id='medias'>
-    <div class='overview'>
-        <h2>NET PROMOTER SCORE</h2>
-        <p id='nps'></p>
-    </div>
-    <div class='overview'>
-        <h2>TAXA DE SATISFAÇÃO</h2>
-        <p id='supera'></p>
-    </div>
-    <div class='overview'>
-        <h2>ALUNAS ACIMA DA MÉDIA</h2>
-        <p id ='above-grade'></p>
-        <p id ='above-grade-percentual'></p>
-    </div>
-</div>
-</section>
-  
-		
+      <!-- <div>
+          <select id="drop-menu-3"></select>
+      </div> -->
+      <div id='medias'>
+        <div class='overview'>
+          <h2>NET PROMOTER SCORE</h2>
+          <p id='nps'></p>
+        </div>
+        <div class='overview'>
+          <h2>TAXA DE SATISFAÇÃO</h2>
+          <div class='overview-2'>
+            <div>
+              <p id='supera'></p>
+            </div>
+             <div id="container-5" class="graphics"></div>
+          </div>         
+        </div>    
+      </div>
+      <div id='medias'>
+          <div class='overview'>
+            <h2>ALUNAS ACIMA DA MÉDIA(TECH)</h2>
+            <p id='above-tech'></p>
+          </div>
+          <div class='overview'>
+            <h2>ALUNAS ACIMA DA MÉDIA(HSE)</h2>
+            <div class='overview-2'>
+              <div>
+                <p id='above-hse'></p>
+              </div>
+               <div class="graphics"></div>
+            </div>         
+          </div>    
+        </div>
+    </section>
 		<script src='./js/data.js'></script>
-		<!-- Aquí va tus archivos JS -->
     <script src='./js/app.js'></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='css/main.css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">   
+    <title>Data Dashboard</title>
+  </head>
+  <body>
+    <header> 
+      <img id ='logo-laboratoria' src="assets/images/logo-laboratoria.svg" alt="Logo Laboratoria">
+    </header>
+    <nav>      
+      <select id="drop-menu" onchange="openDropMenu('drop-menu','drop-menu-2')">                
+        <option value="none" selected>SELECIONE A SEDE</option>
+        <option value="AQP">AREQUIPA</option>
+        <option value="CDMX">CIDADE DO MÉXICO</option>
+        <option value="LIM">LIMA</option>
+        <option value="SCL">SANTIAGO DO CHILE</option>               
+      </select>
+      <select id="drop-menu-2"></select>
+      <ul>
+        <li>
+          <a href="index.html">OVERVIEW</a>
+        </li>
+        <li>
+          <a href="estudantes.html">ESTUDANTES</a>
+        </li>
+        <li>
+          <a href="mentores.html">MENTORES</a>
+        </li>
+      </ul>
+    </nav>
+		<script src='./js/data.js'></script>
+    <script src='./js/app.js'></script>
+  </body>
+</html>
