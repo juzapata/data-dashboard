@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='css/main.css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">   
     <title>Data Dashboard</title>
   </head>
   <body>
+    <header> 
+      <img id ='logo-laboratoria' src="assets/images/logo-laboratoria.svg" alt="Logo Laboratoria">
+  </header>
+  <nav>      
+  <select id="drop-menu" onchange="openDropMenu('drop-menu','drop-menu-2')">                
+      <option value="none" selected>SELECIONE A SEDE</option>
+      <option value="AQP">AREQUIPA</option>
+      <option value="CDMX">CIDADE DO MÉXICO</option>
+      <option value="LIM">LIMA</option>
+      <option value="SCL">SANTIAGO DO CHILE</option>               
+  </select>
+  <select id="drop-menu-2"></select>
+  <ul>
+      <li>
+          <a href="#">OVERVIEW</a>
+      </li>
+      <li>
+          <a href="#">ESTUDANTES</a>
+      </li>
+      <li>
+          <a href="#">MENTORES</a>
+      </li>
+  </ul>
+</nav>
 
-		<!-- Base de datos -->
-		<script src="./js/data.js"></script>
+<section>
+  <div id='medias'>
+      <div class='overview'>
+          <h2>DESENVOLVIMENTO</h2>
+          <p id='enrolment'></p>
+          <p id= 'drop-out' ></p>
+      </div>
+      <div class='overview'>
+          <h2>MEDIA JEDI'S</h2>
+          <p id='jedi-media'></p>
+      </div>
+      <div class='overview'>
+          <h2>MEDIA MENTORES</h2>
+          <p id ='mentors-media'></p>
+      </div>
+  </div>
+  <!-- <div>
+      <select id="drop-menu-3"></select>
+  </div> -->
+  <div id='medias'>
+    <div class='overview'>
+        <h2>NET PROMOTER SCORE</h2>
+        <p id='nps'></p>
+    </div>
+    <div class='overview'>
+        <h2>TAXA DE SATISFAÇÃO</h2>
+        <p id='supera'></p>
+    </div>
+    <div class='overview'>
+        <h2>ALUNAS ACIMA DA MÉDIA</h2>
+        <p id ='above-grade'></p>
+        <p id ='above-grade-percentual'></p>
+    </div>
+</div>
+</section>
+  
+		
+		<script src='./js/data.js'></script>
 		<!-- Aquí va tus archivos JS -->
-    <script src="./js/app.js"></script>
+    <script src='./js/app.js'></script>
   </body>
 </html>
